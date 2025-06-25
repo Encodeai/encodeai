@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="/">
+    <title>EduSphere</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <script>
+      (()=>{
+        window.history.forward();
+      })();
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    
+  </head>
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <%- include('./adminSideBar.ejs')%>
+
+    </div>
+   
+
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+      
+        <div class="container-fluid">
+          <div class="d-flex align-items-center">
+            <div class="site-logo mr-auto"><a href="index.html">
+                            <!-- <img src="images/encode.png" style="height:60px;width:120px;"  alt="Image" class="img-fluid"> -->
+              <img src="images/encode.png" class="logo-default" style="height:40px;width:100px;" alt="Default Logo">
+              <img src="images/encode_black.png" class="logo-sticky" style="height:40px;width:100px;" alt="Sticky Logo">
+
+            </a></div>
+            <%-include('./adminHomeHeader.js')%>
+          </div>
+        </div>
+        
+      </header>
+
+      <div class="site-section" id="courses-section" style="margin-top: -1px;">
+        <br>
+        <div class="container">
+          <div class="row mb-0 justify-content-center">
+            <div class="col-lg-7 text-center"  data-aos="fade-up" data-aos-delay="">
+              <br>
+              <!-- <h4 class="text-black">Blog</h4> -->
+              <h3 class="h4 text-black mb-4">Update Course</h3>
+              <span><%=message%></span>
+            </div>
+          </div>
+          <div class="row mb-5 align-items-center">
+            
+            <div class="col-lg-6 mb-5 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
+              <img src="images/undraw_teaching.svg" alt="Image" class="img-fluid">
+            </div>
+  
+            <div class="col-lg-6 mr-auto order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                      <!-- Admin Update Course -->
+                      <form action="/admin/adminUpdateCourse" method="post" enctype="multipart/form-data" class="form-box">
+                        <h3 class="h4 text-black mb-4">Update Course</h3>
+                        <input type="hidden" name="courseId" id="courseId" value="<%=courseObj.courseId%>">
+                        <div class="form-group">
+                          <input type="text" placeholder="Course Name" value="<%=courseObj.courseName%>" name="courseName" id="courseName" class="form-control">
+                        </div>
+                        <div class="form-group mb-4">
+                          <select name="courseType" id="courseType" class="form-control">
+                            <option value="<%=courseObj.courseType%>"><%=courseObj.courseType%></option>
+                            <option value="Short Term Course">Short Term Course</option>
+                            <option value="Placement Oriented Course">Placement Oriented Course</option>
+                          </select>
+                        </div>
+                        <div class="form-group mb-4">
+                          <select name="courseDuration" id="courseDuration" class="form-control">
+                            <option value="<%=courseObj.courseDuration%>"><%=courseObj.courseDuration%></option>
+                            <option value="1 Month">1 Month</option>
+                            <option value="2 Months">2 Months</option>
+                            <option value="3 Months">3 Months</option>
+                            <option value="6 Months">6 Months</option>
+                            <option value="1 Year">1 Year</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <input type="text" placeholder="Course Fees in INR" value="<%=courseObj.courseFees%>" name="courseFees" id="courseFees" class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <textarea placeholder="Course Description" value="<%=courseObj.courseDesc%>" name="courseDesc" id="courseDesc" class="form-control"><%=courseObj.courseDesc%></textarea>
+                        </div>
+                        Course Banner : 
+                        <img src="<%=courseObj.courseFile%>" height="50%" width="100%"  alt="">
+                        <input type="hidden" name="previousCourseFile" id="previousCourseFile" value="<%=courseObj.courseFile%>"> <br><br>
+                        Or Upload New Course Banner : 
+                        <div class="form-group">
+                          <input type="file" name="courseFile" id="courseFile" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                          <input type="submit" class="btn btn-primary btn-pill" value="Update Course">
+                        </div>
+                      </form>
+                    </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%- include('./footerSection.ejs')%>
+  </div> <!-- .site-wrap -->
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.countdown.min.js"></script>
+  <script src="js/bootstrap-datepicker.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.fancybox.min.js"></script>
+  <script src="js/jquery.sticky.js"></script>
+
+  
+  <script src="js/main.js"></script>
+    
+  </body>
+</html>

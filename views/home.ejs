@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <base href="/">
+  <title>EduSphere</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script>
+    (() => {
+      window.history.forward();
+    })();
+  </script>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+  <link rel="stylesheet" href="css/aos.css">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- seo implementation starts -->
+  <title>
+    <%= pageTitle %>
+  </title>
+  <meta name="description" content="<%= metaDescription %>">
+  <meta name="keywords" content="<%= metaKeywords %>">
+  <link rel="canonical" href="<%= canonicalUrl %>">
+  <meta name="robots" content="index, follow">
+
+  <!-- Social Meta Tags -->
+  <meta property="og:title" content="<%= pageTitle %>">
+  <meta property="og:description" content="<%= metaDescription %>">
+  <meta property="og:url" content="<%= canonicalUrl %>">
+  <meta property="og:image" content="<%= ogImage %>">
+  <meta name="twitter:card" content="<%= twitterCard %>">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  <%= structuredData %>
+  </script>
+
+  <!-- seo implementation ends -->
+  <style>
+    #output {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 40px;
+      white-space: pre-wrap;
+      text-shadow: 1px 2px 1px black;
+      color: white;
+      font-weight: bolder;
+    }
+
+    .fade-in {
+      display: inline-block;
+      opacity: 0;
+      animation: fadeIn 0.5s forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #animate {
+      animation-name: displayAnimate;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes displayAnimate {
+      from {
+        color: red;
+      }
+
+      to {
+        color: whitesmoke;
+      }
+    }
+
+    #animateBtn {
+      animation-name: displayAnimateBtn;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes displayAnimateBtn {
+      from {
+        background-color: crimson;
+      }
+
+      to {
+        background-color: #7971ea;
+      }
+    }
+
+    /* canvas logic starts */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Allow body to scroll */
+    body {
+      /* background-color: #000; */
+      height: auto;
+      /* overflow: visible; */
+      overflow-x: hidden;
+      /* cursor: none; */
+    }
+
+    /* Keep canvas fixed without blocking scroll */
+    canvas {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100vw;
+      height: 100vh;
+      cursor: none;
+    }
+
+    /* canvas logic ends */
+
+    /* glimpse image height starts */
+    .gallery-image {
+      width: 100%;
+      /* Full width */
+      aspect-ratio: 16/9;
+      /* Maintain aspect ratio */
+      object-fit: cover;
+      /* Ensure the image covers its container */
+    }
+
+    @media (max-width: 768px) {
+      .gallery-image {
+        aspect-ratio: 4/3;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .gallery-image {
+        aspect-ratio: 1/1;
+      }
+    }
+
+    /* glimpse image height ends */
+  </style>
+
+</head>
+
+<body style="overflow-x: hidden;" data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <%-include('./homeHeaderSideBar.ejs')%>
+
+    </div>
+
+
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
+      <style>
+
+      </style>
+      <div class="container-fluid">
+        <div class="d-flex align-items-center">
+          <div class="site-logo mr-auto w-20">
+            <a href="index.html">
+              <!-- <img src="images/encode.png" style="height:60px;width:120px;"  alt="Image" class="img-fluid"> -->
+              <img src="images/encode.png" class="logo-default" style="height:40px;width:100px;" alt="Default Logo">
+              <img src="images/encode_black.png" class="logo-sticky" style="height:40px;width:100px;" alt="Sticky Logo">
+            </a>
+          </div>
+
+          <%- include('./homeHeader.ejs')%>
+
+
+        </div>
+      </div>
+
+    </header>
+
+    <div class="intro-section" id="home-section">
+
+      <!-- canvas div starts -->
+      <div class="intro-section" id="home-section">
+        <div class="slide-1" style="background-image: url('images/hero_1.jpg');" data-stellar-background-ratio="0.5">
+          <div class="container" style="position: relative; cursor:none;">
+            <canvas id="particleCanvas"
+              style="position: absolute; top: 0; left: 0; z-index: 0; pointer-events: none;"></canvas>
+            <div class="row align-items-center">
+              <div class="col-12" style="height: 500px; position: relative;">
+                <div class="row align-items-center" style="position: relative; z-index: 1;">
+                  <div class="col-lg-6 mb-4">
+                    <h1 data-aos="fade-up" data-aos-delay="100" class="text-primary">
+                      <i class="bi bi-code-slash text-white"></i>
+                      Our TechStack
+                    </h1>
+                    <h1 data-aos="fade-up" data-aos-delay="100" id="output"></h1>
+                    <p class="mb-4" data-aos="fade-up" data-aos-delay="200">
+                      Simplify coding with a powerful language for web, data, and AI development. Also Build robust,
+                      scalable applications with a versatile object-oriented language.
+                    </p>
+
+                  </div>
+
+                  <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
+                    <form action="/studentEnquiry/enquiry" method="post" class="form-box">
+                      <h3 class="h6 text-black mb-2">
+                        Let's Get Started with a <span style="color:red; font-size: 20px;" id="animate">Free
+                          Course</span>
+                      </h3>
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Email Address" name="email" id="email"
+                          required />
+                      </div>
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Enter 10-digit Mobile Number"
+                          name="contact" id="contact" required />
+                      </div>
+                      <div class="form-group mb-4">
+                        <select name="subject" id="subject" class="form-control">
+                          <option value="">Select Subject</option>
+                          <% result.forEach((course)=> { %>
+                            <option value="<%= course.subject %>">
+                              <%= course.subject %>
+                            </option>
+                            <% }) %>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <input id="animateBtn" type="submit" class="btn btn-primary p-2 w-100" value="Join Now" />
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- canvas div ends -->
+
+    </div>
+
+
+
+    <!-- <div class="site-section courses-title" id="courses-section"> -->
+    <div class="site-section" style="background-color: whitesmoke;" id="courses-section">
+      <div class="container mt-5">
+        <div class="row mb-5 justify-content-center">
+          <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="">
+            <!-- <h2 class="section-title">Courses</h2> -->
+            <h2 class="text-black mb-4">Explore Our Tracks</h2>
+          </div>
+        </div>
+      </div>
+      <!-- </div>
+    <div class="site-section courses-entry-wrap" data-aos="fade-up" data-aos-delay="100"> -->
+      <div class="container" style="margin-top: -75px;">
+        <div class="row">
+
+          <div class="owl-carousel  col-12 nonloop-block-14">
+
+            <%courseData.forEach((obj,index)=>{%>
+              <div class="course bg-white h-100 align-self-stretch">
+                <figure class="m-0">
+                  <a href="#"><img src="<%=obj.courseFile%>" alt="Image" class="img-fluid"></a>
+                </figure>
+                <div class="course-inner-text py-4 px-4">
+                  <span class="course-price">Special Discounts Available</span>
+                  <div class="meta"><span class="icon-clock-o"></span>Placement Oriented / Short Term</div>
+                  <h3><a href="#">
+                      <%=obj.courseName%>
+                    </a></h3>
+                  <p>
+                    <%=obj.courseDesc%>
+                  </p>
+                </div>
+                <div class="d-flex border-top stats">
+                  <div class="py-3 px-4"><span class="icon-users"></span> Limited Batch Size</div>
+                </div>
+              </div>
+              <%})%>
+          </div>
+
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-7 text-center">
+            <button class="customPrevBtn btn btn-primary m-1 col-md-5">Prev</button>
+            <button class="customNextBtn btn btn-primary m-1 col-md-5">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="site-section" id="programs-section">
+      <div class="container">
+        <div class="row mb-5 justify-content-center">
+          <div class="col-lg-9 text-center" data-aos="fade-up" data-aos-delay="">
+            <h2 class="text-black mb-4">Learning Tracks</h2>
+            <p>EduSphere symbolizes a comprehensive and modern educational ecosystem. The name blends "Edu" (education)
+              and "Sphere" (a complete environment) to represent inclusive, tech-driven, and global learning
+              opportunities. It is catchy, brand-friendly, and ideal for scaling in the education sector.
+            </p>
+          </div>
+        </div>
+        <div class="row mb-5 align-items-center">
+          <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="100">
+            <img src="images/undraw_youtube_tutorial.svg" alt="Image" class="img-fluid">
+          </div>
+          <div class="col-lg-6 ml-auto" data-aos="fade-up" data-aos-delay="200">
+            <h4 class="text-black mb-4">We Are Excellent In Education</h4>
+            <p class="mb-4">A commitment to delivering top-tier educational experiences, emphasizing expertise,
+              innovation, and a student-centered approach.</p>
+
+            <div class="p-1 d-flex align-items-center custom-icon-wrap mb-3">
+              <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
+              <div>
+                <h3 class="m-0">1000+ Students</h3>
+              </div>
+            </div>
+
+            <div class="p-1 d-flex align-items-center custom-icon-wrap">
+              <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
+              <div>
+                <h3 class="m-0">2+ Centers</h3>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row mb-5 align-items-center">
+          <div class="col-lg-6 mb-5 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
+            <img src="images/undraw_teaching.svg" alt="Image" class="img-fluid">
+          </div>
+          <div class="col-lg-6 mr-auto order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+            <h4 class="text-black mb-4">Strive for Excellent</h4>
+            <p class="mb-4">Emphasizes the relentless pursuit of growth, improvement, and high-quality outcomes. It
+              embodies a mindset of continuous learning, dedication, and resilience to achieve outstanding results and
+              surpass expectations in every endeavor.</p>
+
+            <div class="p-1 d-flex align-items-center custom-icon-wrap mb-3">
+              <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
+              <div>
+                <h3 class="m-0">750+ Placements</h3>
+              </div>
+            </div>
+
+            <div class="p-1 d-flex align-items-center custom-icon-wrap">
+              <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
+              <div>
+                <h3 class="m-0">20+ Courses</h3>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row mb-5 align-items-center">
+          <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="100">
+            <img src="images/undraw_teacher.svg" alt="Image" class="img-fluid">
+          </div>
+          <div class="col-lg-6 ml-auto" data-aos="fade-up" data-aos-delay="200">
+            <h4 class="text-black mb-4">Education is life</h4>
+            <p class="mb-4">Emphasizes that education is not limited to classrooms but is a continuous journey that
+              shapes personal growth, builds character, and prepares individuals to navigate the complexities of life
+              with knowledge and wisdom.</p>
+
+            <div class="p-1 d-flex align-items-center custom-icon-wrap mb-3">
+              <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
+              <div>
+                <h3 class="m-0">Personality Development</h3>
+              </div>
+            </div>
+
+            <div class="p-1 d-flex align-items-center custom-icon-wrap">
+              <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
+              <div>
+                <h3 class="m-0">Aptitude Grooming</h3>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- video gallery starts -->
+    <div class="site-section" id="visual-section" style="background-color: whitesmoke;margin-top: -120px;">
+      <div class="container">
+        <div class="row mb-5 justify-content-center">
+          <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="">
+            <h2 class="text-black mb-4">Our Visual Library</h2>
+          </div>
+        </div>
+        <div class="" data-aos="fade-up" data-aos-delay="100" style="margin-top: -80px;">
+          <div class="container">
+            <div class="row">
+
+              <div class="owl-carousel col-12 nonloop-block-14">
+                <%videoData.forEach((obj,index)=>{%>
+                  <div class="course bg-white h-100 align-self-stretch">
+                    <figure class="m-0">
+                      <!-- <a href="#"><img src="images/java.jpg" alt="Image" class="img-fluid"></a> -->
+                      <iframe class="w-100" style="height:200px" src="<%=obj.videoLink%>" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                    </figure>
+                    <div class="course-inner-text py-4 px-4">
+                      <span class="course-price">Special Discounts Available</span>
+                      <div class="meta"><span class="icon-clock-o"></span>Placement Oriented / Short Term</div>
+                      <h3><a href="#">
+                          <%=obj.videoTitle%>
+                        </a></h3>
+                      <p>
+                        <%=obj.videoDesc%>
+                      </p>
+                    </div>
+                    <div class="d-flex border-top stats">
+                      <div class="py-3 px-4"><span class="icon-users"></span> Limited Batch Size</div>
+                    </div>
+                  </div>
+                  <%})%>
+
+              </div>
+
+            </div>
+
+            <div class="row justify-content-center">
+              <div class="col-7 text-center">
+                <button class="customPrevBtn btn btn-primary m-1 col-md-5">Prev</button>
+                <button class="customNextBtn btn btn-primary m-1 col-md-5">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- video gallery ends -->
+    <div class="site-section" id="teachers-section">
+      <div class="container">
+
+        <div class="row mb-5 justify-content-center">
+          <div class="col-lg-7 mb-5 text-center" data-aos="fade-up" data-aos-delay="">
+            <h2 class="text-black mb-4">Pioneers</h2>
+            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam repellat aut neque!
+              Doloribus sunt non aut reiciendis, vel recusandae obcaecati hic dicta repudiandae in quas quibusdam ullam,
+              illum sed veniam!</p>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="teacher text-center">
+              <img src="images/person_1.jpg" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">
+              <div class="py-2">
+                <h3 class="text-black">Benjamin Stone</h3>
+                <p class="position">Physics Teacher</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro eius suscipit delectus enim iusto
+                  tempora, adipisci at provident.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="teacher text-center">
+              <img src="images/person_2.jpg" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">
+              <div class="py-2">
+                <h3 class="text-black">Katleen Stone</h3>
+                <p class="position">Physics Teacher</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro eius suscipit delectus enim iusto
+                  tempora, adipisci at provident.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="teacher text-center">
+              <img src="images/person_3.jpg" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">
+              <div class="py-2">
+                <h3 class="text-black">Sadie White</h3>
+                <p class="position">Physics Teacher</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro eius suscipit delectus enim iusto
+                  tempora, adipisci at provident.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- slider for photo gallery starts -->
+
+    <div class="site-section" id="visual-section" style="background-color: whitesmoke;margin-top: -120px;">
+      <div class="container">
+        <div class="row mb-5 justify-content-center">
+          <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="">
+            <h2 class="text-black mb-4">Glimpse of EduSphere</h2>
+          </div>
+        </div>
+        <div class="" data-aos="fade-up" data-aos-delay="100" style="margin-top: -80px;">
+          <div class="container">
+            <div class="row">
+              <div class="owl-carousel col-12 nonloop-block-14">
+                <%if(glimphsData.length==0){%>
+                  Gallery is Empty
+                  <%}else{ glimphsData.forEach((obj,index)=>{
+                    %>
+                    <div class="course bg-white h-100 align-self-stretch">
+                      <figure class="m-0">
+                        <a href="#"><img src="<%=obj.glimphsImage%>" alt="Image" class="img-fluid gallery-image"></a>
+                      </figure>
+                    </div>
+                    <%})}%>
+              </div>
+            </div>
+
+
+            <div class="row justify-content-center">
+              <div class="col-7 text-center">
+                <button class="customPrevBtn btn btn-primary m-1 col-md-5">Prev</button>
+                <button class="customNextBtn btn btn-primary m-1 col-md-5">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- slider for photo gallery ends -->
+    <div class="site-section bg-image overlay" style="background-image: url('images/hero_1.jpg');">
+      <!-- <div class="container">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-md-8 text-center testimony">
+            <img src="images/person_4.jpg" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
+            <h3 class="mb-4">Jerome Jensen</h3>
+            <blockquote>
+              <p>&ldquo; Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum rem soluta sit eius
+                necessitatibus voluptate excepturi beatae ad eveniet sapiente impedit quae modi quo provident odit
+                molestias! Rem reprehenderit assumenda &rdquo;</p>
+            </blockquote>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="container">
+        <div class="row mb-5 justify-content-center">
+          <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="">
+            <h2 class="text-white mb-4">Declaration of trust</h2>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: -70px;">
+
+          <div class="owl-carousel col-12 nonloop-block-14">
+            <%if(testimonialData.length==0){%>
+              <span class="text-white">No Record Found</span>
+              <%}else{testimonialData.forEach((obj)=>{%>
+                <div class="course bg-white h-100 align-self-stretch row col-12">
+                  <div class="col-md-5 p-0">
+                    <img src="<%=obj.profilePic%>" alt="Course Image" class="img-fluid"
+                      style="height:100%;object-fit: cover;">
+                  </div>
+                  <div class="col-md-7 d-flex flex-column justify-content-center p-4" style="height:40vh">
+                    <span class="course-price">
+                      <%=obj.name%>
+                    </span>
+                    <p>
+                      <%=obj.comment%>
+                    </p>
+                  </div>
+                </div>
+                <%})}%>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="site-section pb-0">
+
+      <div class="future-blobs">
+        <div class="blob_2">
+          <img src="images/blob_2.svg" alt="Image">
+        </div>
+        <div class="blob_1">
+          <img src="images/blob_1.svg" alt="Image">
+        </div>
+      </div>
+      <div class="container">
+        <div class="row mb-5 justify-content-center" data-aos="fade-up" data-aos-delay="">
+          <div class="col-lg-7 text-center">
+            <h2 class="text-black mb-4">Benefits of Choosing Us</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-5 ml-auto align-self-start" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="p-4 rounded bg-white why-choose-us-box">
+
+              <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3 p-0">
+                <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-star"></span></span>
+                </div>
+                <div>
+                  <h3 class="m-0">Central India's Top Growing Institute</h3>
+
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3 p-0">
+                <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-star"></span></span>
+                </div>
+                <div>
+                  <h3 class="m-0">Trending Courses</h3>
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3 p-0">
+                <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-star"></span></span>
+                </div>
+                <div>
+                  <h3 class="m-0">Top Professionals Workshops</h3>
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3 p-0">
+                <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-star"></span></span>
+                </div>
+                <div>
+                  <h3 class="m-0">Well Furnished Labs</h3>
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3 p-0">
+                <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-star"></span></span>
+                </div>
+                <div>
+                  <h3 class="m-0">Best Online Teaching Assistant Courses</h3>
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3 p-0">
+                <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-star"></span></span>
+                </div>
+                <div>
+                  <h3 class="m-0">Best Industry Experts</h3>
+                </div>
+              </div>
+
+            </div>
+
+            <style>
+              .custom-icon-wrap:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+              }
+
+              .custom-icon-wrap {
+                padding: 15px;
+                background-color: #f9f9f9;
+                border-radius: 10px;
+              }
+            </style>
+
+
+          </div>
+          <div class="col-lg-6 align-self-end" data-aos="fade-left" data-aos-delay="200">
+            <img src="images/person_transparent.png" alt="Image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <!-- 
+    <div class="site-section bg-light" id="contact-section">
+      <div class="container">
+
+        <div class="row justify-content-center">
+          <div class="col-md-7">
+
+
+
+            <h2 class="section-title mb-3">Get In Touch</h2>
+            <p class="mb-5">"Your Success, Our Mission!"</p>
+
+            <form method="post" data-aos="fade">
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <input type="text" class="form-control" placeholder="First Username">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <input type="text" class="form-control" placeholder="Subject">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <input type="email" class="form-control" placeholder="Email">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <textarea class="form-control" id="" cols="30" rows="3"
+                    placeholder="Write your message here."></textarea>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-12">
+
+                  <input type="submit" class="btn btn-primary py-3 px-5 btn-block btn-pill" value="Send Message">
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+ -->
+    <%- include('./footerSection.ejs')%>
+  </div> <!-- .site-wrap -->
+  <!-- Owl Carousel and jQuery Script -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      const $carousel = $('.owl-carousel');
+
+      $carousel.owlCarousel({
+        items: 2,
+        loop: true,
+        margin: 20,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        nav: false,
+        dots: false,
+        responsive: {
+          0: { items: 1 },
+          768: { items: 2 },
+          992: {
+            items: 3
+          }
+        }
+      });
+
+      // Custom navigation buttons
+      $('.customPrevBtn').click(function () {
+        $carousel.trigger('prev.owl.carousel');
+      });
+
+      $('.customNextBtn').click(function () {
+        $carousel.trigger('next.owl.carousel');
+      });
+    });
+  </script>
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.countdown.min.js"></script>
+  <script src="js/bootstrap-datepicker.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.fancybox.min.js"></script>
+  <script src="js/jquery.sticky.js"></script>
+
+
+  <script src="js/main.js"></script>
+  <script>
+    // typed characters
+    // Array of dynamic text content
+    const messages = [
+      "MERN STACK",
+      "Python with AI/ML",
+      "JAVA STACK",
+      "DATA ANALYTICS",
+      "POWER BI",
+      "C | C++"
+    ];
+
+    const outputElement = document.getElementById('output');
+    let messageIndex = 0; // Track current message
+    let charIndex = 0; // Track current character
+
+    function printCharacter() {
+      const text = messages[messageIndex]; // Get the current message
+      if (charIndex < text.length) {
+        const span = document.createElement('span');
+        span.textContent = text.charAt(charIndex);
+        span.classList.add('fade-in');
+        outputElement.appendChild(span);
+        charIndex++;
+        setTimeout(printCharacter, 100); // Delay for the next character
+      } else {
+        setTimeout(() => {
+          outputElement.textContent = ''; // Clear the output
+          charIndex = 0; // Reset the character index
+          messageIndex = (messageIndex + 1) % messages.length; // Move to the next message
+          printCharacter(); // Restart printing with the new message
+        }, 2000); // Pause before switching to the next message
+      }
+    }
+
+    printCharacter(); // Start the printing process
+  </script>
+
+  <!-- canvas scripts starts -->
+  <script>
+    const canvas = document.getElementById("particleCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particlesArray = [];
+    const mouse = {
+      x: null,
+      y: null
+    };
+
+    window.addEventListener("mousemove", (event) => {
+      mouse.x = event.x;
+      mouse.y = event.y;
+      // Add fewer particles per mouse movement
+      for (let i = 0; i < 2; i++) {
+        particlesArray.push(new Particle());
+      }
+    });
+
+    class Particle {
+      constructor() {
+        this.x = mouse.x;
+        this.y = mouse.y;
+        this.size = Math.random() * 4 + 1;
+        this.speedX = (Math.random() - 0.5) * 1;  // Reduced speed
+        this.speedY = (Math.random() - 0.5) * 1;
+        this.color = `rgba(255, 255, 255, ${Math.random() * 0.7 + 0.3})`;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.size > 0.2) this.size -= 0.01; // Slower shrinking
+      }
+
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function handleParticles() {
+      for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
+
+        for (let j = i; j < particlesArray.length; j++) {
+          const dx = particlesArray[i].x - particlesArray[j].x;
+          const dy = particlesArray[i].y - particlesArray[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < 70) { // Increased minimum distance for fewer connections
+            ctx.beginPath();
+            ctx.strokeStyle = particlesArray[i].color;
+            ctx.lineWidth = 0.1;
+            ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+            ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+            ctx.stroke();
+          }
+        }
+        if (particlesArray[i].size <= 0.2) {
+          particlesArray.splice(i, 1);
+          i--;
+        }
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      handleParticles();
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+  <!-- canvas script ends -->
+</body>
+
+</html>

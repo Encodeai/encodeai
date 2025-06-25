@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="/">
+    <title>EduSphere</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script>
+      (()=>{
+        window.history.forward();
+      })();
+    </script>
+    
+    
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    
+  </head>
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <%- include('./adminSideBar.ejs')%>
+
+    </div>
+   
+
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+      
+        <div class="container-fluid">
+          <div class="d-flex align-items-center">
+            <div class="site-logo mr-auto"><a href="index.html">
+                            <!-- <img src="images/encode.png" style="height:60px;width:120px;"  alt="Image" class="img-fluid"> -->
+              <img src="images/encode.png" class="logo-default" style="height:40px;width:100px;" alt="Default Logo">
+              <img src="images/encode_black.png" class="logo-sticky" style="height:40px;width:100px;" alt="Sticky Logo">
+
+            </a></div>
+            <%-include('./adminHomeHeader.js')%>
+          </div>
+        </div>
+        
+      </header>
+
+    
+    <div class="site-section" id="teachers-section" style="margin-top: -1px;">
+      <div class="container">
+
+        <div class="row mb-5 justify-content-center">
+          <div class="col-lg-7 mb-5 text-center"  data-aos="fade-up" data-aos-delay="">
+            <br><br>
+            <h2 class="text-black">Our Students</h2>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-6 col-lg-6 mb-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="teacher text-center">
+              <a href="/admin/enquiryStudentList">
+              <img src="images/enquiry.jpg" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">
+              <div class="py-2">
+                <h2 class="text-black">Enquired Students</h2>
+                <!-- <p class="position">Physics Teacher</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro eius suscipit delectus enim iusto tempora, adipisci at provident.</p> -->
+              </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-6 mb-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="teacher text-center">
+              <a href="/admin/existingStudentList">
+              <img src="images/existing.jpg" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">
+              <div class="py-2">
+                <h2 class="text-black">Existing Student</h2>
+                <!-- <p class="position">Physics Teacher</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro eius suscipit delectus enim iusto tempora, adipisci at provident.</p> -->
+              </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('./footerSection.ejs')%>
+  </div> <!-- .site-wrap -->
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.countdown.min.js"></script>
+  <script src="js/bootstrap-datepicker.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.fancybox.min.js"></script>
+  <script src="js/jquery.sticky.js"></script>
+
+  
+  <script src="js/main.js"></script>
+    
+  </body>
+</html>
