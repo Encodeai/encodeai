@@ -38,7 +38,7 @@ SSH into your EC2 instance: Open a terminal on your local machine and run the fo
 
 ssh -i /path/to/your/key.pem ubuntu@<your-ec2-public-ip>
 
-ssh -i "D:\\Programming Stairs\\FullStackBatch_Evening\\Project\\Express_Mongoose_EJS\\pem file aws\\edusphere_key_value_pair.pem" ubuntu@23.22.33.19
+ssh -i "D:\\Programming Stairs\\FullStackBatch_Evening\\Project\\Express_Mongoose_EJS\\pem file aws\\edusphere_key_value_pair.pem" ubuntu@13.201.184.200
 
 Replace /path/to/your/key.pem with the path to your private key file.
 

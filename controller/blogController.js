@@ -36,10 +36,10 @@ export const blogController = async (request, response) => {
                     pageTitle: "EduSphere | Best Programming & IT Courses in India",
                     metaDescription: "Join EduSphere – the leading coaching institute for C, C++, Java, Python, Full Stack Development, Data Analytics,MERN STACK, node, express, mongodb and mysql and more. Get certified and career-ready.",
                     metaKeywords: "EduSphere, programming coaching, Java training, Python, C++, IT courses, computer classes, Mern Stack, git github, deployment, cloud, aws",
-                    canonicalUrl: "http://23.22.33.19:5000/",
+                    canonicalUrl: "http://13.201.184.200:5000/",
                   
                     // Social sharing
-                    ogImage: "http://23.22.33.19:5000/images/og-image.jpg",
+                    ogImage: "http://13.201.184.200:5000/images/og-image.jpg",
                     twitterCard: "summary_large_image",
                   
                     // Structured Data
@@ -47,8 +47,8 @@ export const blogController = async (request, response) => {
                       "@context": "https://schema.org",
                       "@type": "EducationalOrganization",
                       "name": "EduSphere",
-                      "url": "http://23.22.33.19:5000",
-                      "logo": "http://23.22.33.19:5000/images/logo.png",
+                      "url": "http://13.201.184.200:5000",
+                      "logo": "http://13.201.184.200:5000/images/logo.png",
                       "sameAs": [
                         "https://www.facebook.com/Codingthinker/",
                         "https://www.instagram.com/codingthinker/"
@@ -107,10 +107,10 @@ export const detailedBlogController = async (request, response) => {
                     pageTitle: "EduSphere | Best Programming & IT Courses in India",
                     metaDescription: "Join EduSphere – the leading coaching institute for C, C++, Java, Python, Full Stack Development, Data Analytics,MERN STACK, node, express, mongodb and mysql and more. Get certified and career-ready.",
                     metaKeywords: "EduSphere, programming coaching, Java training, Python, C++, IT courses, computer classes, Mern Stack, git github, deployment, cloud, aws",
-                    canonicalUrl: "http://23.22.33.19:5000/",
+                    canonicalUrl: "http://13.201.184.200:5000/",
                   
                     // Social sharing
-                    ogImage: "http://23.22.33.19:5000/images/og-image.jpg",
+                    ogImage: "http://13.201.184.200:5000/images/og-image.jpg",
                     twitterCard: "summary_large_image",
                   
                     // Structured Data
@@ -118,8 +118,8 @@ export const detailedBlogController = async (request, response) => {
                       "@context": "https://schema.org",
                       "@type": "EducationalOrganization",
                       "name": "EduSphere",
-                      "url": "http://23.22.33.19:5000",
-                      "logo": "http://23.22.33.19:5000/images/logo.png",
+                      "url": "http://13.201.184.200:5000",
+                      "logo": "http://13.201.184.200:5000/images/logo.png",
                       "sameAs": [
                         "https://www.facebook.com/Codingthinker/",
                         "https://www.instagram.com/codingthinker/"
