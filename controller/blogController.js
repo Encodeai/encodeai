@@ -1,6 +1,9 @@
 import blogSchema from "../model/blogSchema.js";
+import courseSchema from "../model/courseSchema.js";
 import glimphsSchema from "../model/glimphsSchema.js";
+import testimonialSchema from "../model/testimonialSchema.js";
 import uploadSyllabusSchema from "../model/uploadSyllabusSchema.js";
+import videoSchema from "../model/videoSchema.js";
 export const blogController = async (request, response) => {
     try {
         const blogData = await blogSchema.find();
