@@ -85,9 +85,9 @@ app.get("/",async (request,response)=>{
             status: "",
           
             // SEO metadata
-            pageTitle: "EduSphere | Best Programming & IT Courses in India",
-            metaDescription: "Join EduSphere – the leading coaching institute for C, C++, Java, Python, Full Stack Development, Data Analytics,MERN STACK, node, express, mongodb and mysql and more. Get certified and career-ready.",
-            metaKeywords: "EduSphere, programming coaching, Java training, Python, C++, IT courses, computer classes, Mern Stack, git github, deployment, cloud, aws",
+            pageTitle: "EncodeAI | Best Programming & IT Courses in India",
+            metaDescription: "Join EncodeAI – the leading coaching institute for C, C++, Java, Python, Full Stack Development, Data Analytics,MERN STACK, node, express, mongodb and mysql and more. Get certified and career-ready.",
+            metaKeywords: "EncodeAI, programming coaching, Java training, Python, C++, IT courses, computer classes, Mern Stack, git github, deployment, cloud, aws",
             canonicalUrl: "http://13.201.184.200:5000/",
           
             // Social sharing
@@ -98,7 +98,7 @@ app.get("/",async (request,response)=>{
             structuredData: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "EducationalOrganization",
-              "name": "EduSphere",
+              "name": "EncodeAI",
               "url": "http://13.201.184.200:5000",
               "logo": "http://13.201.184.200:5000/images/logo.png",
               "sameAs": [

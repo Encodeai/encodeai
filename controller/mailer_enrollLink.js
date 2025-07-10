@@ -11,7 +11,7 @@ function mailer(email,callback){
         from : process.env.EMAIL,
         to : email,
         subject:'Enrollment Link',
-        html:`Hello ${email}<br>This is a Enrollment Link from <b>EduSphere Central India's Most trusted Organization</b>. You need to enroll yourself by clicking on the below link. <br><a href='${process.env.BACKEND_URL}student/studentRegistration?email=${email}'>Click Here to Enroll</a>`
+        html:`Hello ${email}<br>This is a Enrollment Link from <b>EncodeAI Central India's Most trusted Organization</b>. You need to enroll yourself by clicking on the below link. <br><a href='${process.env.BACKEND_URL}student/studentRegistration?email=${email}'>Click Here to Enroll</a>`
     }
 
     transport.sendMail(mailOption,(error,info)=>{
