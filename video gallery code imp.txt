@@ -1,0 +1,52 @@
+<div class="site-section" id="visual-section" style="background-color: whitesmoke;margin-top: -120px;">
+      <div class="container">
+        <div class="row mb-5 justify-content-center">
+          <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="">
+            <h2 class="text-black mb-4">Our Visual Library</h2>
+          </div>
+        </div>
+        <div class="" data-aos="fade-up" data-aos-delay="100" style="margin-top: -80px;">
+          <div class="container">
+            <div class="row">
+
+              <div class="owl-carousel col-12 nonloop-block-14">
+                <%videoData.forEach((obj,index)=>{%>
+                  <div class="course bg-white h-100 align-self-stretch">
+                    <figure class="m-0">
+                      <!-- <a href="#"><img src="images/java.jpg" alt="Image" class="img-fluid"></a> -->
+                      <iframe class="w-100" style="height:200px" src="<%=obj.videoLink%>" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                    </figure>
+                    <div class="course-inner-text py-4 px-4">
+                      <span class="course-price">Special Discounts Available</span>
+                      <div class="meta"><span class="icon-clock-o"></span>Placement Oriented / Short Term</div>
+                      <h3><a href="#">
+                          <%=obj.videoTitle%>
+                        </a></h3>
+                      <p>
+                        <%=obj.videoDesc%>
+                      </p>
+                    </div>
+                    <div class="d-flex border-top stats">
+                      <div class="py-3 px-4"><span class="icon-users"></span> Limited Batch Size</div>
+                    </div>
+                  </div>
+                  <%})%>
+
+              </div>
+
+            </div>
+
+            <div class="row justify-content-center">
+              <div class="col-7 text-center">
+                <button class="customPrevBtn btn btn-primary m-1 col-md-5">Prev</button>
+                <button class="customNextBtn btn btn-primary m-1 col-md-5">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
