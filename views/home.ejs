@@ -122,7 +122,7 @@
     }
 
     /* Allow body to scroll */
-    body {
+    html,body {
       /* background-color: #000; */
       height: auto;
       /* overflow: visible; */
@@ -920,7 +920,7 @@ Our success is not measured by certificates — it’s measured by your confiden
     .popup {
       font-weight: bolder;
       position: fixed;
-      top: 30%;
+      top: 40%;
       left: 50%;
       transform: translate(-50%, -30%);
       background: whitesmoke;
@@ -995,8 +995,8 @@ Our success is not measured by certificates — it’s measured by your confiden
       for (let i = 0; i < 10; i++) {
         const balloon = template.cloneNode(true);
         balloon.classList.remove('hidden');
-        balloon.style.left = `${Math.random() * 100}vw`;
-        balloon.style.top = `${Math.random() * 100}vh`;
+        balloon.style.left = `${Math.random() * 90}vw`;
+        balloon.style.top = `${Math.random() * 90}vh`;
 
         // Random color
         const color = `hsl(${Math.random() * 360}, 100%, 70%)`;
