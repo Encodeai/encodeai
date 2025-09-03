@@ -329,7 +329,8 @@
         <div class="row mb-5 justify-content-center">
           <div class="col-lg-9 text-center" data-aos="fade-up" data-aos-delay="">
             <h2 class="text-black mb-4">Learning Tracks</h2>
-            <p>EncodeAI symbolizes a comprehensive and modern educational ecosystem. The name  represent inclusive, tech-driven, and global learning
+            <p>EncodeAI symbolizes a comprehensive and modern educational ecosystem. The name represent inclusive,
+              tech-driven, and global learning
               opportunities. It is catchy, brand-friendly, and ideal for scaling in the education sector.
             </p>
           </div>
@@ -778,8 +779,8 @@ Our success is not measured by certificates — it’s measured by your confiden
     // typed characters
     // Array of dynamic text content
     const messages = [
-    "GENERATIVE AI",  
-    "MERN STACK",
+      "GENERATIVE AI",
+      "MERN STACK",
       "AI/ML WITH PYTHON",
       "JAVA STACK",
       "DATA ANALYTICS",
@@ -898,6 +899,115 @@ Our success is not measured by certificates — it’s measured by your confiden
     });
   </script>
   <!-- canvas script ends -->
+
+  <!-- placement popup starts -->
+  <style>
+    .hidden {
+      display: none;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    .popup {
+      font-weight: bolder;
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -30%);
+      background: whitesmoke;
+      padding: 20px;
+      border-radius: 10px;
+      z-index: 1000;
+      color:black;
+      text-align: center;
+      box-shadow: 0 0 660px 960px rgba(0, 0, 0, 0.3);
+    }
+
+    .user-img {
+      width: 150px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .ribbon,
+    .balloon {
+      position: absolute;
+      animation: floatUp 6s ease-in infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-120vh) scale(0.8);
+        opacity: 0;
+      }
+    }
+  </style>
+  <!-- Balloon Template (hidden initially) -->
+  <svg id="balloon-template" class="balloon hidden" viewBox="0 0 50 50" width="50" height="100">
+    <ellipse cx="25" cy="30" rx="20" ry="30" fill="red" />
+    <line x1="25" y1="60" x2="25" y2="100" stroke="gray" stroke-width="2" />
+  </svg>
+
+  <!-- Popup Container -->
+  <div id="popup" class="popup hidden">
+    <button id="close-btn" class="close-btn">×</button>
+    <img src="/images/sourabh.jpg" alt="User Image" class="user-img" />
+    <p><b>Congratulations <br>Sourabh Kamdar</b><br>
+      Placed in NOVA Technologies, Bangalore <br>
+      <b>As a Data Scientist</b>
+      <br>
+      <b>Package : 7 LPA</b>
+    </p>
+  </div>
+  <!-- Ribbons and Balloons Container -->
+  <div id="effects-container"></div>
+
+  <script>
+    document.getElementById('close-btn').addEventListener('click', () => {
+      document.getElementById('popup').classList.add('hidden');
+      document.getElementById('effects-container').innerHTML = ''; // Clear ribbons & balloons
+    });
+
+    setTimeout(() => {
+      document.getElementById('popup').classList.remove('hidden');
+      launchEffects();
+    }, 1000);
+
+    function launchEffects() {
+      const container = document.getElementById('effects-container');
+      const template = document.getElementById('balloon-template');
+
+      for (let i = 0; i < 10; i++) {
+        const balloon = template.cloneNode(true);
+        balloon.classList.remove('hidden');
+        balloon.style.left = `${Math.random() * 100}vw`;
+        balloon.style.top = `${Math.random() * 100}vh`;
+
+        // Random color
+        const color = `hsl(${Math.random() * 360}, 100%, 70%)`;
+        balloon.querySelector('ellipse').setAttribute('fill', color);
+
+        container.appendChild(balloon);
+      }
+    }
+
+  </script>
+
+  <!-- placement popup ends -->
 </body>
 
 </html>
