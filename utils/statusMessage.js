@@ -22,6 +22,7 @@ export const message = {
     ACCOUNT_DEACTIVATED:"Account De-Activated | Contact Admin to Re-Activate",
     ENQUIRY_REMARK : "Remark Added",
     UPLOAD_STATUS : "File Uploaded Successfully",
+    UPLOAD_RECORD : "Record Uploaded Successfully",
     MAIL_SENT_SYLLABUS:"Syllabus Sent in Mail",
     MAIL_NOT_SENT:"Error While sending Syllabus in mail",
     COURSE_ADDED:"Course Added Successfully",

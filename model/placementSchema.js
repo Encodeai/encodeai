@@ -1,43 +1,26 @@
 import mongoose from "mongoose";
 const placementSchema = mongoose.Schema({
-    enrollId:{
+    placementId:{
         type:String,
         required:true
     },
-    name:{
+    studentName:{
         type:String,
         required:true
     },
-    email:{
+    companyName:{
         type:String,
         required:true,
-        unique:true
-    },
-    password:{
-        type:String,
-        required:true
-    },
-    gender:{
-        type:String,
-        required:true
-    },
-    date:{
-        type:Date,
-        required:true
     },
     contact:{
         type:String,
         required:true
     },
-    address:{
+    designation:{
         type:String,
         required:true
     },
-    gname:{
-        type:String,
-        required:true
-    },    
-    gcontact:{
+    package:{
         type:String,
         required:true
     },
@@ -48,10 +31,6 @@ const placementSchema = mongoose.Schema({
     status:{
         type:Boolean,
         default:true
-    },
-    adminVerify:{
-        type:String,
-        default:"Not Verified"
     }
 });
-export default mongoose.model('studentSchema',studentSchema,'student');
+export default mongoose.model('placementSchema',placementSchema,'placement');

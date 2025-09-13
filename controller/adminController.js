@@ -27,6 +27,7 @@ import { response } from "express";
 import mailer_testimonialLink from "./mailer_testimonialLink.js";
 import testimonialSchema from "../model/testimonialSchema.js";
 import customUpload from "../utils/customUploadFunctionality.js";
+import placementSchema from "../model/placementSchema.js";
 
 dotenv.config();
 const ADMIN_SECRET_KEY = process.env.ADMIN_SECRET_KEY;
@@ -506,6 +507,34 @@ export const adminAddBlogController = async (request, response) => {
     } catch (error) {
         console.error("Error in adminAddBlogController:", error);
         response.render("createBlogForm.ejs", {
+            message: message.SOMETHING_WENT_WRONG,
+            status: status.SERVER_ERROR
+        });
+    }
+};
+
+export const adminAddPlacementController = async (request, response) => {
+    try {
+        const filename = request.files.profilePic; // Get uploaded file
+        const fileName = `${Date.now()}_${filename.name}`; // Unique filename
+
+        const fileUrl = await customUpload('placementImages', filename, fileName);
+        console.log("----------> fileurl : " + fileUrl);
+
+        // Save blog details in the database
+        request.body.placementId = uuid4();
+        request.body.profilePic = fileUrl; // S3 File URL
+
+        await placementSchema.create(request.body);
+
+        response.render("addPlacementForm.ejs", {
+            message: message.UPLOAD_RECORD,
+            status: status.SUCCESS
+        });
+
+    } catch (error) {
+        console.error("Error in adminAddPlacementController:", error);
+        response.render("addPlacementForm.ejs", {
             message: message.SOMETHING_WENT_WRONG,
             status: status.SERVER_ERROR
         });

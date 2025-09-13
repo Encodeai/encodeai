@@ -1,5 +1,5 @@
 import express from 'express';
-import { adminLoginController,adminEmployeeListController,adminVerifyEmployeeController,adminEnquiryStudentListController,adminAddStudRemarkController,adminUploadSyllabusController,adminSendSyllabusController,adminAddCourseController,adminViewCoursesController,adminCourseListController,adminAddDetailedSyllabusController,adminDetailedSyllabusController,downloadExcelController,adminViewBatchesController,adminAllocateTrainerController,adminAddBlogController,adminAddDomainController,updateDomainFormController,adminUpdateDomainController,deleteDomainController,domainPageController, createDomainFormController,addInterviewQuestionsController,adminAddInterviewQuestionsController,adminViewInterviewQuestionsController,adminViewBlogController,updateBlogController,adminDeleteBlogController,adminDeleteInterviewQuestionController,glimphsFileUploadController,existingStudentListController,adminVerifyStudentController,adminAddVideoLinkController,adminDeleteVideoLinkController,adminViewVideoLinkController,updateVideoGalleryController,adminDeleteCourseController,adminUpdateCourseController,adminUpdateCourse,sendTestimonialLinkController,testimonialListController,adminVerifyTestimonialController,adminRemoveTestimonialController,adminLogoutController } from '../controller/adminController.js';
+import { adminLoginController,adminEmployeeListController,adminVerifyEmployeeController,adminEnquiryStudentListController,adminAddStudRemarkController,adminUploadSyllabusController,adminSendSyllabusController,adminAddCourseController,adminViewCoursesController,adminCourseListController,adminAddDetailedSyllabusController,adminDetailedSyllabusController,downloadExcelController,adminViewBatchesController,adminAllocateTrainerController,adminAddBlogController,adminAddDomainController,updateDomainFormController,adminUpdateDomainController,deleteDomainController,domainPageController, createDomainFormController,addInterviewQuestionsController,adminAddInterviewQuestionsController,adminViewInterviewQuestionsController,adminViewBlogController,updateBlogController,adminDeleteBlogController,adminDeleteInterviewQuestionController,glimphsFileUploadController,existingStudentListController,adminVerifyStudentController,adminAddVideoLinkController,adminDeleteVideoLinkController,adminViewVideoLinkController,updateVideoGalleryController,adminDeleteCourseController,adminUpdateCourseController,adminUpdateCourse,sendTestimonialLinkController,testimonialListController,adminVerifyTestimonialController,adminRemoveTestimonialController,adminLogoutController,adminAddPlacementController } from '../controller/adminController.js';
 import {fileURLToPath} from 'url';
 import jwt from 'jsonwebtoken';
 import path from 'path';
@@ -96,6 +96,7 @@ adminRouter.get('/createBlogForm',authenticateJWT,(request,response)=>{
 });
 adminRouter.post('/adminViewBlog',authenticateJWT,adminViewBlogController);
 adminRouter.post('/adminAddBlog',authenticateJWT,adminAddBlogController);
+adminRouter.post('/adminAddPlacement',authenticateJWT,adminAddPlacementController);
 adminRouter.get('/domainPage',authenticateJWT,domainPageController);
 adminRouter.get('/createDomainForm',authenticateJWT,createDomainFormController);
 adminRouter.post('/adminAddDomain',authenticateJWT,adminAddDomainController);
@@ -141,5 +142,11 @@ adminRouter.get('/testimonialList',authenticateJWT,testimonialListController);
 adminRouter.post('/adminVerifyTestimonial',authenticateJWT,adminVerifyTestimonialController);
 adminRouter.post('/adminRemoveTestimonial',authenticateJWT,adminRemoveTestimonialController);
 adminRouter.get('/adminLogout',adminLogoutController);
+adminRouter.get('/addPlacementForm',(request,response)=>{
+    const email = request.body.email;
+    // console.log("---------->",email);
+    response.render("addPlacementForm.ejs",{email,message:""});
+});
+
 export default adminRouter;
 

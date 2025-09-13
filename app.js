@@ -26,6 +26,7 @@ import videoSchema from './model/videoSchema.js';
 import testimonialSchema from './model/testimonialSchema.js';
 import { SitemapStream, streamToPromise } from 'sitemap';
 import { Readable } from 'stream';
+import placementSchema from './model/placementSchema.js';
 
 mongoose.connect(url,{
     useNewUrlParser:true,
@@ -64,6 +65,7 @@ app.get("/",async (request,response)=>{
         const glimphsData = await glimphsSchema.find({status:true});
         const videoData = await videoSchema.find({status:true});
         const courseData = await courseSchema.find({status:true});
+        const placementData = await placementSchema.find({status:true});
         const testStatus = {
             $and:[
                 {
@@ -80,6 +82,7 @@ app.get("/",async (request,response)=>{
             courseData: courseData.reverse(),
             videoData: videoData.reverse(),
             glimphsData: glimphsData.reverse(),
+            placementData : placementData.reverse(),
             result: res,
             message: "",
             status: "",

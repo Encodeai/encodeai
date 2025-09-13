@@ -15,6 +15,7 @@
             <li><a class="dropdown-item" href="/admin/glimphsGallery">GlimpseGallery</a></li>
             <li><a class="dropdown-item" href="/admin/videoGallery">VideoGallery</a></li>
             <li><a class="dropdown-item" href="/admin/testimonialList">Testimonial</a></li>
+            <li><a class="dropdown-item" href="/admin/addPlacementForm">Add Placement</a></li>
         </ul>
     </li>
     <li><a href="/admin/adminLogout" class="nav-link">Logout</a></li>
