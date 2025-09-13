@@ -1,6 +1,7 @@
 import blogSchema from "../model/blogSchema.js";
 import courseSchema from "../model/courseSchema.js";
 import glimphsSchema from "../model/glimphsSchema.js";
+import placementSchema from "../model/placementSchema.js";
 import testimonialSchema from "../model/testimonialSchema.js";
 import uploadSyllabusSchema from "../model/uploadSyllabusSchema.js";
 import videoSchema from "../model/videoSchema.js";
@@ -15,6 +16,7 @@ export const blogController = async (request, response) => {
         const glimphsData = await glimphsSchema.find({ status: true });
         const videoData = await videoSchema.find({ status: true });
         const courseData = await courseSchema.find({status:true});
+        const placementData = await placementSchema.find({status:true});
         const testStatus = {
                     $and:[
                         {
@@ -31,6 +33,7 @@ export const blogController = async (request, response) => {
                     courseData: courseData.reverse(),
                     videoData: videoData.reverse(),
                     glimphsData: glimphsData.reverse(),
+                    placementData:placementData.reverse(),
                     result: res,
                     message: "",
                     status: "",
@@ -86,6 +89,7 @@ export const detailedBlogController = async (request, response) => {
         const glimphsData = await glimphsSchema.find({ status: true });
         const videoData = await videoSchema.find({ status: true });
         const courseData = await courseSchema.find({status:true});
+        const placementData = await placementSchema.find({status:true});
         const testStatus = {
                     $and:[
                         {
@@ -102,6 +106,7 @@ export const detailedBlogController = async (request, response) => {
                     courseData: courseData.reverse(),
                     videoData: videoData.reverse(),
                     glimphsData: glimphsData.reverse(),
+                    placementData : placementData.reverse(),
                     result: res,
                     message: "",
                     status: "",

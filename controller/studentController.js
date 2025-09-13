@@ -15,6 +15,7 @@ import videoSchema from "../model/videoSchema.js";
 import courseSchema from "../model/courseSchema.js";
 import assignmentSchema from "../model/assignmentSchema.js";
 import customUpload from "../utils/customUploadFunctionality.js";
+import placementSchema from "../model/placementSchema.js";
 const STUDENT_SECRET_KEY = process.env.STUDENT_SECRET_KEY;
 
 // export const studentRegistrationController = async (request, response) => {
@@ -151,6 +152,7 @@ export const addTestimonialController = async (request, response) => {
         const glimphsData = await glimphsSchema.find({ status: true });
         const videoData = await videoSchema.find({ status: true });
         const courseData = await courseSchema.find({ status: true });
+        const placementData = await placementSchema.find({status:true});
         const testStatus = {
             $and: [
                 {
@@ -160,7 +162,7 @@ export const addTestimonialController = async (request, response) => {
             ]
         }
         const testimonialData = await testimonialSchema.find(testStatus);
-        response.render("home.ejs", { testimonialData: testimonialData.reverse(), courseData: courseData.reverse(), videoData: videoData.reverse(), glimphsData: glimphsData.reverse(), result: res, message: "", status: "" });
+        response.render("home.ejs", { testimonialData: testimonialData.reverse(), courseData: courseData.reverse(), videoData: videoData.reverse(), glimphsData: glimphsData.reverse(),placementData:placementData.reverse(), result: res, message: "", status: "" });
     } catch (error) {
         response.render("notfound.ejs", { message: message.SOMETHING_WENT_WRONG, status: status.SERVER_ERROR });
     }

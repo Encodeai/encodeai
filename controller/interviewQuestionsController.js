@@ -1,6 +1,7 @@
 import domainSchema from "../model/domainSchema.js";
 import glimphsSchema from "../model/glimphsSchema.js";
 import interviewQuestionsSchema from "../model/interviewQuestionsSchema.js";
+import placementSchema from "../model/placementSchema.js";
 import uploadSyllabusSchema from "../model/uploadSyllabusSchema.js";
 import { message, status } from "../utils/statusMessage.js";
 export const interviewSubjectController = async (request, response) => {
@@ -14,6 +15,8 @@ export const interviewSubjectController = async (request, response) => {
         const glimphsData = await glimphsSchema.find({ status: true });
         const videoData = await videoSchema.find({ status: true });
         const courseData = await courseSchema.find({status:true});
+        const testimonialData = await testimonialSchema.find(testStatus);
+        const placementData = await placementSchema.find({status:true});
         const testStatus = {
                     $and:[
                         {
@@ -22,7 +25,7 @@ export const interviewSubjectController = async (request, response) => {
                         }
                     ]
                 }
-                const testimonialData = await testimonialSchema.find(testStatus);
+                
                 //response.render("home.ejs",{testimonialData:testimonialData.reverse(),courseData:courseData.reverse(),videoData:videoData.reverse(),glimphsData:glimphsData.reverse(),result:res,message:"",status:""});
 
                         res.render("home.ejs", {
@@ -30,6 +33,7 @@ export const interviewSubjectController = async (request, response) => {
                             courseData: courseData.reverse(),
                             videoData: videoData.reverse(),
                             glimphsData: glimphsData.reverse(),
+                            placementData : placementData.reverse(),
                             result: res,
                             message: "",
                             status: "",
