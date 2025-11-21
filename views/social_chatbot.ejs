@@ -1,0 +1,201 @@
+<!-- social networking fixed bar starts -->
+<style>
+    .social-bar {
+        z-index: 2;
+        position: fixed;
+        top: 50%;
+        /* vertically centered */
+        left: 0;
+        /* stick to the left side */
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(#6d8196, #7971ea, red);
+        /* bar background */
+        padding: 10px;
+        border-radius: 0 5px 5px 0;
+    }
+
+    .social-bar a {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        margin: 5px 0;
+        display: block;
+        transition: background 0.3s;
+    }
+
+    .social-bar a:hover {
+        background: linear-gradient(#234567);
+        border-radius: 50%;
+        box-shadow: 1px 1px 10px 1px;
+        transform: rotate(360deg);
+        transition: 1s;
+    }
+
+    .bot1 {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background: #7971ea;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 9999;
+        color: white;
+        font-size: 28px;
+        box-shadow: 0 0 10px black;
+    }
+
+    .bot2 {
+        display: none;
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 320px;
+        z-index: 9999;
+    }
+
+    #bot3 {
+        border-radius: 10px;
+        background: white;
+        padding: 0;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        color: black;
+    }
+
+    #bot4 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background: white;
+        border-radius: 10px 10px 0 0;
+        color: black;
+    }
+
+    #bot5 {
+        background: transparent;
+        border: none;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    .bot6 {
+        margin-top: 10px;
+        max-height: 200px;
+        overflow-y: auto;
+        color: black;
+        scrollbar-width: none;
+    }
+
+    .bot7 {
+        width: 100%;
+        outline: 0;
+        background: white;
+        border: 1px solid #ccc;
+        height: 50px;
+        border-top-width: 0px;
+        border-right-width: 0px;
+        border-left-width: 0px;
+        font-size: 15px;
+        color: black;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+
+    #bot8 {
+        width: 100%;
+        outline: 0;
+        margin-top: 10px;
+        padding: 5px;
+        font-size: 16px;
+        background: #7971ea;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<div class="social-bar">
+    <a target="_blank" href="https://www.youtube.com/channel/UCjzk5WYDG8dtnwZmz_cXcCQ"><i class="fab fa-youtube"></i></a>
+    <a target="_blank" href="https://www.instagram.com/encode__ai?igsh=emI2bG45ZGQwbTYx"><i class="fab fa-instagram"></i></a>
+    <a target="_blank" href="https://www.linkedin.com/company/encode-ai-in/"><i class="fab fa-linkedin-in"></i></a>
+</div>
+
+<!-- social networking fixed bar ends -->
+<!-- chat boat code starts -->
+<!-- Chatbot Icon -->
+<div id="chatbotIcon" onclick="toggleChat()" class="bot1">💬</div>
+
+<!-- Chatbot Window -->
+<div id="chatbotWindow" class="bot2">
+
+    <!-- Outer Box -->
+    <div id="bot3">
+
+        <!-- Header with gradient -->
+        <div id="bot4">
+            <h4 style="margin:0; font-size: 16px;">Hey, I am your Bot</h4>
+            <button onclick="toggleChat()" id="bot5">✖</button>
+        </div>
+
+        <!-- Chat Body -->
+        <div style="padding:10px;">
+            <!-- Chat Area -->
+            <div id="faqResponse" class="bot6"></div>
+
+            <!-- User Input -->
+            <textarea id="faqMsg" placeholder="Ask your question..." class="bot7"></textarea>
+
+            <!-- Send Button -->
+            <button onclick="sendFAQ()" id="bot8">Send</button>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleChat() {
+        let box = document.getElementById("chatbotWindow");
+        box.style.display = (box.style.display === "none" || box.style.display === "")
+            ? "block" : "none";
+    }
+
+    async function sendFAQ() {
+        const msgBox = document.getElementById("faqMsg");
+        const message = msgBox.value.trim();
+
+        if (message === "") return;
+
+        const res = await fetch("/admin/faq-chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message })
+        });
+
+        const data = await res.json();
+
+        // Append chat with black text always
+        document.getElementById("faqResponse").innerHTML +=
+            `<p style="color:black; font-size:16px;">
+        <b>You:</b> ${message}<br>
+        <b>Bot:</b> ${data.reply}
+     </p>`;
+
+        // 🔥 AUTO-SCROLL TO BOTTOM
+        faqResponse.scrollTop = faqResponse.scrollHeight;
+
+        msgBox.value = "";
+    }
+</script>
+
+<!-- chat boat code ends -->
