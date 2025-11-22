@@ -20,7 +20,9 @@ var adminRouter = express.Router();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 // console.log("__dirname : ",__dirname.replace('\\router','')+'/public');
-adminRouter.use(express.static(__dirname.replace('\\router','')+'/public'));
+// adminRouter.use(express.static(__dirname.replace('\\router','')+'/public'));
+adminRouter.use(express.static(path.join(__dirname, "../public")));
+
 /*
 if we comment this line adminRouter.use(express.static(__dirname.replace('\\router','')+'/public'));
 then also front end properly works as we put <base href='/'> on every page <head> tag
