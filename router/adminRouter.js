@@ -11,7 +11,6 @@ import blogSchema from '../model/blogSchema.js';
 import glimphsSchema from '../model/glimphsSchema.js';
 import videoSchema from '../model/videoSchema.js';
 import testimonialSchema from '../model/testimonialSchema.js';
-import faqs from "./data.json"  with { type: "json" };;
 
 // import dotenv from 'dotenv';
 // dotenv.config();
@@ -152,76 +151,6 @@ adminRouter.get('/addPlacementForm',(request,response)=>{
     response.render("addPlacementForm.ejs",{email,message:""});
 });
 
-//  chatboat code starts
-
-// adminRouter.post("/faq-chat", (req, res) => {
-//     const userMsg = req.body.message.toLowerCase();
-// // console.log("------> message : ",req.body.message);
-
-//     // Find FAQ with matching keyword
-//     const found = faqs.find(faq =>
-//         userMsg.includes(faq.question.toLowerCase().split(" ")[0]) ||
-//         userMsg.includes(faq.question.toLowerCase().split(" ")[1])
-//     );
-
-//     if (found) {
-//         return res.json({ reply: found.answer });
-//     }
-
-//     return res.json({ reply: "Sorry, I don't understand. Please ask related to our FAQ." });
-// });
-
-
-adminRouter.post("/faq-chat", (req, res) => {
-    const userMsg = req.body.message.toLowerCase().trim();
-
-    if (!userMsg) {
-        return res.json({ reply: "Please enter a valid question." });
-    }
-
-    let bestMatch = null;
-    let bestScore = 0;
-
-    // Loop through all FAQs
-    for (let faq of faqs) {
-        const q = faq.question.toLowerCase();
-
-        // Exact match
-        if (userMsg === q) {
-            return res.json({ reply: faq.answer });
-        }
-
-        // Count how many words match
-        let score = 0;
-        const userWords = userMsg.split(" ");
-        const faqWords = q.split(" ");
-
-        userWords.forEach(word => {
-            if (faqWords.includes(word)) {
-                score++;
-            }
-        });
-
-        // Track highest match
-        if (score > bestScore) {
-            bestScore = score;
-            bestMatch = faq;
-        }
-    }
-
-    // If meaningful match found
-    if (bestMatch && bestScore > 0) {
-        return res.json({ reply: bestMatch.answer });
-    }
-
-    // Otherwise reply default  
-    return res.json({
-        reply: "Sorry, I didn't understand your question. Please ask something related to our courses."
-    });
-});
-
-
-// chatboat code ends
 
 export default adminRouter;
 

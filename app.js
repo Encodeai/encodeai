@@ -27,6 +27,7 @@ import testimonialSchema from './model/testimonialSchema.js';
 import { SitemapStream, streamToPromise } from 'sitemap';
 import { Readable } from 'stream';
 import placementSchema from './model/placementSchema.js';
+import faqs from "./router/data.json"  with { type: "json" };;
 
 mongoose.connect(url,{
     useNewUrlParser:true,
@@ -176,9 +177,49 @@ app.get('/sitemap.xml', async (req, res) => {
       res.status(500).end();
     }
   });
+// chat bot code starts 
+app.post("/faq-chat", (req, res) => {
+    const userMsg = req.body.message.toLowerCase().trim();
 
+    if (!userMsg) {
+        return res.json({ reply: "Please enter a valid question." });
+    }
 
+    let bestMatch = null;
+    let bestScore = 0;
 
+    for (let faq of faqs) {
+        const q = faq.question.toLowerCase();
+
+        // Exact match
+        if (userMsg === q) {
+            return res.json({ reply: faq.answer });
+        }
+
+        // Count word matches
+        let score = 0;
+        const userWords = userMsg.split(" ");
+        const faqWords = q.split(" ");
+
+        userWords.forEach(word => {
+            if (faqWords.includes(word)) score++;
+        });
+
+        if (score > bestScore) {
+            bestScore = score;
+            bestMatch = faq;
+        }
+    }
+
+    if (bestMatch && bestScore > 0) {
+        return res.json({ reply: bestMatch.answer });
+    }
+
+    return res.json({
+        reply: "Sorry, I didn't understand your question. Please ask something related to our courses."
+    });
+});
+// chat bot code ends
 app.listen(process.env.PORT,()=>{
     console.log("Connection established Successfully");
 });
