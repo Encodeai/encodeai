@@ -538,5 +538,45 @@
   { "question": "What is the difference between frontend and backend?", "answer": "Frontend deals with visuals, backend deals with logic and data." },
   { "question": "Do you provide daily tasks?", "answer": "Yes, we give daily coding and practice tasks." },
   { "question": "Which is easiest: Java, Python, or MERN?", "answer": "Python is the easiest, Java is moderate, MERN requires JavaScript skills." },
-  { "question": "What is data visualization?", "answer": "Data visualization represents data using graphs and charts." }
+  { "question": "What is data visualization?", "answer": "Data visualization represents data using graphs and charts." },
+  {
+    "question": "What is Encode AI?",
+    "answer": "Encode AI is a tech training institute offering programming, AI, data science, and software development courses."
+  },
+  {
+    "question": "Where is Encode AI located in Indore?",
+    "answer": "Encode AI has two centers in Indore: Center-I at 2nd Floor Indraprastha Tower, Near Palasia Square, Indore MP, and Center-II at 2nd Floor Veda Complex, Bhawarkua, Indore, Madhya Pradesh 452014."
+  },
+  {
+    "question": "How can I contact Encode AI?",
+    "answer": "You can contact Encode AI at 7000919841 for admission and course inquiries."
+  },
+  {
+    "question": "Which courses are offered by Encode AI?",
+    "answer": "Encode AI offers training in Python, Java, MERN Stack, AI, Machine Learning, Data Analytics, Web Development, and more."
+  },
+  {
+    "question": "Does Encode AI provide certification?",
+    "answer": "Yes, Encode AI provides valid and industry-recognized certificates after course completion."
+  },
+  {
+    "question": "Does Encode AI provide placement assistance?",
+    "answer": "Yes, Encode AI offers placement support, interview preparation, resume building, and internship guidance."
+  },
+  {
+    "question": "Is Encode AI suitable for beginners?",
+    "answer": "Yes, Encode AI provides beginner-friendly courses with step-by-step guidance and practical examples."
+  },
+  {
+    "question": "What is the contact number of Encode AI Indore Center-I?",
+    "answer": "The contact number for Encode AI is 7000919841."
+  },
+  {
+    "question": "Does Encode AI have multiple centers?",
+    "answer": "Yes, Encode AI has two centers: Center-I at Indraprastha Tower, Near Palasia Square, and Center-II at Veda Complex, Bhawarkua, Indore."
+  },
+  {
+    "question": "Why should I choose Encode AI?",
+    "answer": "Encode AI offers expert trainers, practical-based teaching, modern curriculum, real projects, certifications, and personalized career guidance."
+  }
 ]
