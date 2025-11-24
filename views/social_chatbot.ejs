@@ -122,6 +122,25 @@
         border-radius: 5px;
         cursor: pointer;
     }
+    /* WhatsApp Button */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 90px;   /* 90px so it appears ABOVE chatbot */
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 9999;
+    font-size: 28px;
+    box-shadow: 0 0 10px black;
+}
+
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -132,6 +151,15 @@
 </div>
 
 <!-- social networking fixed bar ends -->
+
+<!-- whatsapp code starts -->
+ <!-- WhatsApp Icon -->
+<a href="https://wa.me/917000919841?text=Hello%20Encode%20AI%2C%20I%20need%20help" target="_blank">
+    <div class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+</a>
+ <!-- whatsapp code ends -->
 <!-- chat boat code starts -->
 <!-- Chatbot Icon -->
 <div id="chatbotIcon" onclick="toggleChat()" class="bot1">💬</div>
