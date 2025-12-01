@@ -56,3 +56,6 @@ Let me know if you need further debugging! 🚀
 #############
 We use <base href="/"> in every ejs page inside <head> tag  
 #############
+
+
+// color code  background-color: #7971ea;
