@@ -10,7 +10,8 @@ const blogSchema = mongoose.Schema({
     },
     blogContent:{
         type:String,
-        required:true
+        required:true,
+         maxlength: 500000  // increase limit as per your need
     },
     timeToRead:{
         type:String,

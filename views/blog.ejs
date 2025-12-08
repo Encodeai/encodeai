@@ -137,9 +137,9 @@
                                 <h5><%=blogObj.blogTitle%></h5>
                                 <span><b>Uploaded On : </b> <%=blogObj.uploadDate%> | <%=blogObj.uploadTime%></span>
                                 <p class="blog-text">
-                                    <span class="short-text">
+                                    <!-- <span class="short-text">
                                         <%=blogObj.blogContent.split(' ').slice(0, 20).join(' ') + '...'%>
-                                    </span><br>
+                                    </span><br> -->
                                     <span><b>Read Time : </b><%=blogObj.timeToRead%></span>    
                                 </p>
                                 <a href="/blog/detailedBlog?blogObject=<%=JSON.stringify(blogObj)%>">
