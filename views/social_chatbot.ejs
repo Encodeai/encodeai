@@ -12,7 +12,7 @@
         flex-direction: column;
         background: linear-gradient(#6d8196, #1F2539, red);
         /* bar background */
-        padding: 10px;
+        padding: 1px;
         border-radius: 0 5px 5px 0;
     }
 
@@ -33,7 +33,7 @@
         transition: 1s;
     }
 
-    .bot1 {
+    /* .bot1 {
         position: fixed;
         bottom: 20px;
         right: 20px;
@@ -50,6 +50,56 @@
         font-size: 28px;
         box-shadow: 0 0 10px black;
     }
+ */
+.bot1 {
+    height: 50px;
+    width: 50px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* SMOKE EFFECT using pseudo-element */
+.bot1::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0));
+    animation: smokeSpread 2s infinite ease-out;
+    pointer-events: none;
+}
+
+/* SMOKE KEYFRAMES */
+@keyframes smokeSpread {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    70% {
+        transform: scale(2.5);
+        opacity: 0.2;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+/* ICON STYLE */
+.bot1 i {
+    font-size: 28px;
+    color: #000;
+}
+
 
     .bot2 {
         display: none;
@@ -127,8 +177,8 @@
     position: fixed;
     bottom: 90px;   /* 90px so it appears ABOVE chatbot */
     right: 20px;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background: #25D366;
     color: white;
     border-radius: 50%;
@@ -139,6 +189,25 @@
     z-index: 9999;
     font-size: 28px;
     box-shadow: 0 0 10px black;
+}
+.chat-left {
+    text-align: left;
+    background: #eaeaea;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin: 6px 0;
+    max-width: 85%;
+    font-size: 15px;
+}
+
+.chat-right {
+    text-align: right;
+    background: #d1e7ff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin: 6px 0 6px auto;
+    max-width: 85%;
+    font-size: 15px;
 }
 
 </style>
@@ -158,14 +227,14 @@
  <!-- WhatsApp Icon -->
 <a href="https://wa.me/917000919841?text=Hello%20Encode%20AI%2C%20I%20need%20help" target="_blank">
     <div class="whatsapp-btn">
-        <i class="fab fa-whatsapp"></i>
+        <i style="font-size: 50px;" class="fab fa-whatsapp"></i>
     </div>
 </a>
  <!-- whatsapp code ends -->
 <!-- chat boat code starts -->
 <!-- Chatbot Icon -->
-<div id="chatbotIcon" onclick="toggleChat()" class="bot1"><i class="fas fa-robot"></i>
-
+<div id="chatbotIcon" style="height:50px;width:50px;" onclick="toggleChat()" class="bot1">
+    <i style="font-size: 40px;" class="fas fa-headset"></i>
 </div>
 
 <!-- Chatbot Window -->
@@ -176,7 +245,7 @@
 
         <!-- Header with gradient -->
         <div id="bot4">
-            <h4 style="margin:0; font-size: 16px;">Hey, I am your Bot</h4>
+            <h4 style="margin:0; font-size: 16px;">Hey, I am your GyanMitra</h4>
             <button onclick="toggleChat()" id="bot5">✖</button>
         </div>
 
@@ -186,10 +255,10 @@
             <div id="faqResponse" class="bot6"></div>
 
             <!-- User Input -->
-            <textarea id="faqMsg" placeholder="Ask your question..." class="bot7"></textarea>
+            <input id="faqMsg" placeholder="Ask your question with Your GyanMitra" class="bot7"></input>
 
             <!-- Send Button -->
-            <button onclick="sendFAQ()" id="bot8">Ask</button>
+            <button onclick="sendFAQ()" id="bot8">Ask Your GyanMitra</button>
 
         </div>
     </div>
@@ -217,12 +286,21 @@
         const data = await res.json();
 const faqResponse = document.getElementById("faqResponse"); // ✅ add this
 
-        // Append chat with black text always
-        document.getElementById("faqResponse").innerHTML +=
-            `<p style="color:black; font-size:16px;">
-        <b>You:</b> ${message}<br>
-        <b>Bot:</b> ${data.reply}
-     </p>`;
+    //     // Append chat with black text always
+    //     document.getElementById("faqResponse").innerHTML +=
+    //         `<p style="color:black; font-size:16px;">
+    //     <b>You:</b> ${message}<br>
+    //     <b>Bot:</b> ${data.reply}
+    //  </p>`
+    //  ;
+
+    document.getElementById("faqResponse").innerHTML +=
+    `<div class="chat-right">
+        <b>You:</b> ${message}
+    </div>
+    <div class="chat-left">
+        <b>GyanMitra:</b> ${data.reply}
+    </div>`;
 
         // 🔥 AUTO-SCROLL TO BOTTOM
         faqResponse.scrollTop = faqResponse.scrollHeight;

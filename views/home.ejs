@@ -4,6 +4,8 @@
 <head>
   <base href="/">
   <title>EncodeAI</title>
+  <link rel="icon" href="images/encode_black.ico">
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <script>
@@ -168,7 +170,6 @@
 
     /* glimpse image height ends */
   </style>
-
 </head>
 
 <body style="overflow-x: hidden;" data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -222,7 +223,7 @@
               <div class="col-12" style="height: 500px; position: relative;">
                 <div class="row align-items-center" style="position: relative; z-index: 1;">
                   <div class="col-lg-6 mb-4">
-                    <h1 data-aos="fade-up" data-aos-delay="100" style="color: #1F2539; text-shadow: 1px 1px 0px white;">
+                    <h1 data-aos="fade-up" data-aos-delay="100" style="color: white; text-shadow: 1px 1px 0px #1F2539;">
                       <i class="bi bi-code-slash text-white"></i>
                       Our TechStack
                     </h1>
@@ -303,7 +304,7 @@
                   <h3><a href="#" style="color: #1F2539;">
                       <%=obj.courseName%>
                     </a></h3>
-                  <p class="text-dark">
+                  <p class="">
                     <%=obj.courseDesc%>
                   </p>
                 </div>
@@ -342,7 +343,7 @@
           <div class="owl-carousel  col-12 nonloop-block-14">
 
             <%placementData.forEach((obj,index)=>{%>
-              <div class="course bg-white h-100 align-self-stretch" style="box-shadow: 1px 1px 50px 10px; border-radius: 20px;">
+              <div class="course bg-white h-100 align-self-stretch" style="box-shadow: 1px 1px 10px 1px; border-radius: 20px;">
                 <figure class="m-0">
                   <a href="#"><img src="<%=obj.profilePic%>" style="height:160px; width:160px; margin-left: 25%;" class="image-responsive" alt="Image" ></a>
                 </figure>
