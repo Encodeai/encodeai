@@ -27,12 +27,14 @@ import testimonialSchema from './model/testimonialSchema.js';
 import { SitemapStream, streamToPromise } from 'sitemap';
 import { Readable } from 'stream';
 import placementSchema from './model/placementSchema.js';
-import faqs from "./router/data.json"  with { type: "json" };;
+import faqs from "./router/data.json"  with { type: "json" };
+import chatbotRoutes from './router/chatbot.js';
+
 
 mongoose.connect(url,{
     useNewUrlParser:true,
     useUnifiedTopology:true,
-    serverSelectionTimeoutMS:1200000,
+    serverSelectionTimeoutMS:7200000,
     maxPoolSize: 10, // Set the maximum pool size to 10
 });
 
@@ -52,6 +54,7 @@ app.use(express.static(__dirname+'/public'));
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+app.use('/api/chatbot', chatbotRoutes);
 
 app.use((req, res, next) => {
     res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
